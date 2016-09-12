@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html ng-app="moneyzoneApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Express</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/css/bootstrap-select.min.css">
+	<link href="/css/styles.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+	<!-- Navigation -->
+	<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+		<!--<nav class="navbar navbar-fixed-top navbar-dark bg-faded" role="navigation">-->
+
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#calendar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/about">{{title}}</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="calendar">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+
+						<button class="btn btn-sm navbar-btn btn-primary">Month</button>
+						<button class="btn btn-sm navbar-btn" style="margin-right:30px;">Year</button>
+
+					</li>
+
+					{{#each months}}
+					<li style="margin-left:5px;margin-right:5px">
+						{{#if this}}
+						<button class="btn btn-sm navbar-btn">{{this}}</button>
+						{{else}}
+						&nbsp;&nbsp;&nbsp;
+						{{/if}}
+					</li>
+					{{/each}}
+					
+
+					<li style="margin-left:5px;margin-right:5px;margin-top:8px">
+
+						<select class="selectpicker" data-style="btn-md btn-primary" multiple>
+
+							<option selected>2009</option>
+							{{#each years}}
+							<option>{{this}}</option>
+
+							{{/each}}
+						</select>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	{{{body}}}
+	
+	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/js/bootstrap-select.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+	<script type="text/javascript" src="/app.js"></script>
+	<script type="text/javascript" src="/home/home.controller.js"></script>
+	<script type="text/javascript" src="/common/services/expenseData.service.js"></script>
+
+</body>
+</html>

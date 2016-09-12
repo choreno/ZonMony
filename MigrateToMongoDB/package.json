@@ -1,0 +1,13 @@
+{
+  "name": "migrate-mongo-db",
+  "version": "0.0.0",
+  "description": "MigrateMongoDB",
+  "main": "app.js",
+  "author": {
+    "name": "Changburm.Cho"
+  },
+  "dependencies": {
+    "line-by-line": "^0.1.5",
+    "mongoose": "^4.5.9"
+  }
+}
