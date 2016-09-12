@@ -1,4 +1,4 @@
-﻿angular.module('moneyzoneApp', ['ngRoute']);
+﻿angular.module('zonMonyApp', ['ngRoute']);
 
 function config($routeProvider) {
 
@@ -13,5 +13,5 @@ function config($routeProvider) {
 };
 
 
-angular.module('moneyzoneApp')
+angular.module('zonMonyApp')
 	.config(['$routeProvider', config]);

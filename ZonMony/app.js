@@ -1,5 +1,3 @@
-//cbc test 2 3 4
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');

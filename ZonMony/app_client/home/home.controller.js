@@ -1,4 +1,4 @@
-﻿angular.module('moneyzoneApp')
+﻿angular.module('zonMonyApp')
 	.controller('homeCtrl', homeCtrl);
 
 

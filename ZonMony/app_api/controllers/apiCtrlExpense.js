@@ -2,7 +2,7 @@
 	//FolderModel = require('../models/folder'),
 	//ExpenseModel = require('../models/expense');
 	moment = require('moment');
-	ExpenseModel = require('../models/expenseFolder');
+ExpenseModel = require('../models/expenseFolder');
 
 //moment().format();
 
@@ -33,8 +33,8 @@ module.exports.deletePayment = function (req, res) {
 		}
 
 		//get the subdoc, payment and remove
-		folder.payment.id(req.params.paymentId).remove(); 
-		
+		folder.payment.id(req.params.paymentId).remove();
+
 		folder.save(function (err, folder) {
 			if (err) {
 				sendJsonResponse(res, 400, err);
@@ -48,13 +48,13 @@ module.exports.deletePayment = function (req, res) {
 
 
 
-} ; 
+};
 
 
 module.exports.deleteFolder = function (req, res) {
 
-	var folderId = req.params.folderId; 
-	
+	var folderId = req.params.folderId;
+
 
 	if (folderId) {
 
@@ -68,8 +68,8 @@ module.exports.deleteFolder = function (req, res) {
 
 	}
 	else {
-		sendJsonResponse(res, 404, { message: 'No folderId' }); 
-		return; 
+		sendJsonResponse(res, 404, { message: 'No folderId' });
+		return;
 	}
 
 };
@@ -78,7 +78,7 @@ module.exports.deleteFolder = function (req, res) {
 
 
 module.exports.updatePayment = function (req, res) {
-	
+
 	if (!req.params.folderId) {
 		sendJsonResponse(res, 404, { message: 'Not found, folder id is required' });
 		return;
@@ -86,13 +86,13 @@ module.exports.updatePayment = function (req, res) {
 
 
 	ExpenseModel.findById(req.params.folderId, function (err, folder) {
-		
+
 		if (!folder) {
 			sendJsonResponse(res, 404, { message: 'folder is not found.' });
 			return;
 		} else if (err) {
-			sendJsonResponse(res, 400, err); 
-			return; 
+			sendJsonResponse(res, 400, err);
+			return;
 		}
 
 		//*** get the subdoc, payment
@@ -110,11 +110,11 @@ module.exports.updatePayment = function (req, res) {
 
 			}
 			else
-				sendJsonResponse(res, 200, folder); 
+				sendJsonResponse(res, 200, folder);
 		});
 
 	});
-	
+
 };
 
 
@@ -249,7 +249,7 @@ module.exports.createFolder = function (req, res) {
 
 
 module.exports.getFolder = function (req, res) {
-	
+
 
 	//get all
 	ExpenseModel.find({}, function (err, folder) {
@@ -267,7 +267,7 @@ module.exports.getFolder = function (req, res) {
 		sendJsonResponse(res, 200, folder);
 	});
 
-	
+
 	;
 
 
@@ -290,7 +290,7 @@ module.exports.getFolderById = function (req, res) {
 			sendJsonResponse(res, 200, folder);
 
 		});
-		
+
 
 	}
 	else {
@@ -299,35 +299,38 @@ module.exports.getFolderById = function (req, res) {
 
 }
 
-module.exports.getFoldersByDTTM = function(req,res){
+module.exports.getFoldersByDTTM = function (req, res) {
 
-	// var month = parseInt(req.query.month); 
-	// var year = parseInt(req.query.year); 
-
-	// var year = req.body.year;
-	// var month = req.body.month; 
-	 
-	//ExpenseModel.find({'payment.paymentDTTM':{'$gte': new Date(year,month+1,1), '$lt':new Date(year,month+1,30)} }
+	
 	ExpenseModel.find(
-		{'payment':{ $elemMatch:{year:parseInt(req.query.year), month: parseInt(req.query.month)} }},
-		{ 'name': 1, 'tab':1, 'payment.$': 1 },
-	 function (err, folder) {
+		{ 'payment': { $elemMatch: { year: parseInt(req.query.year), month: parseInt(req.query.month) } } },
+		{
+			'name': 1,
+			'tab': 1,
+			'url': 1,
+			'dueDate': 1,
+			'payByCreditCard': 1,
+			'note': 1,
+			'statusDTTM': 1,
+			'payment.$': 1
+		},
+		function (err, folder) {
 
-		if (!folder) {
-			sendJsonResponse(res, 404, { message: 'folder is not found' });
-			return;
-		}
-		else if (err) {
-			sendJsonResponse(res, 404, err);
-			return;
-		}
+			if (!folder) {
+				sendJsonResponse(res, 404, { message: 'folder is not found' });
+				return;
+			}
+			else if (err) {
+				sendJsonResponse(res, 404, err);
+				return;
+			}
 
 
-		sendJsonResponse(res, 200, folder);
-	})
-	
-	
-	;
+			sendJsonResponse(res, 200, folder);
+		})
+
+
+		;
 
 
 }
