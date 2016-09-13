@@ -316,7 +316,7 @@ module.exports.getFoldersByDTTM = function (req, res) {
 		},
 		function (err, folder) {
 
-			if (!folder) {
+			if (folder.length < 1 ) {
 				sendJsonResponse(res, 404, { message: 'folder is not found' });
 				return;
 			}
