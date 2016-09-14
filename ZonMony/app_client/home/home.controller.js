@@ -50,6 +50,7 @@ function homeCtrl(expenseFolderData) {
 		.success(function (data) {
 
 			vm.expenses = data;
+			console.log(data);
 			vm.folders = [...new Set(data.map(x => x.name))].sort();
 
 			let sum = 0;

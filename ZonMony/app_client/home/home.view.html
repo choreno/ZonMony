@@ -29,7 +29,7 @@
 				<div class="panel panel-primary" ng-repeat="folder in vm.folders">
 
 					<div class="panel-heading">
-						<div class="panel-title" style="padding-left:15px">
+						<div class="panel-title">
 							<div class="row">
 								<div class="col-md-12 btn-group">
 									<button type="button" class="btn btn-primary">
@@ -52,12 +52,18 @@
 						<div class="list-group"  ng-repeat="expense in vm.expenses" ng-if="expense.name == folder" >
 							<div>
 								<a class="list-group-item" data-toggle="collapse" data-target="#{{expense._id}}" data-parent="#{{expense._id}}">
-									{{expense.tab}} 
+									<strong>{{expense.tab}}</strong> -- {{expense.payment[0].amount|currency}} 
 								</a>
 							</div>
 							<div id="{{expense._id}}" class="collapse">
 								<ul>
-									<li>{{expense.tab}}</li>
+									<li>Note: {{expense.payment[0].note}}</li>
+									<li>URL: {{expense.url}}</li>
+									<li>DueDate: {{expense.dueDate}}</li>
+									<li>payByCreditCard: {{expense.payByCreditCard}}</li>
+									<li>UpdatedDTTM: {{expense.payment[0].updatedDTTM | date : 'medium'}}</li>
+									<li>CreatedDTTM: {{expense.payment[0].createdDTTM | date : 'medium'}}</li>
+
 								</ul>
 							</div>
 						</div>
@@ -65,45 +71,7 @@
 					</div>
 
 				</div>
-				------------------------------------------------
-				<div class="panel panel-primary" ng-repeat="expense in vm.expenses">
-
-					<div class="panel-heading">
-						<div class="panel-title" style="padding-left:15px">
-							<div class="row">
-								<div class="col-md-12 btn-group">
-									<button type="button" class="btn btn-primary">
-										{{expense.name}} - {{expense.tab}}
-									</button>
-									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-									<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="">what</a></li>
-									</ul>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="panel-body">
-						<div class="list-group">
-							<div>
-								<a class="list-group-item" data-toggle="collapse" data-target="#{{expense._id}}" data-parent="#{{expense._id}}">
-									{{expense.tab}} -- ${{expense.payment[0].amount}} -- {{expense.payment[0].note}}
-								</a>
-							</div>
-							<div id="{{expense._id}}" class="collapse">
-								<ul>
-									<li>{{expense.payment[0].note}}</li>
-								</ul>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
+		
 				<!--end of ng-repeat-->
 
 
