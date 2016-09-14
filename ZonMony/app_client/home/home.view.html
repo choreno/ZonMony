@@ -26,6 +26,46 @@
 			<!-- Middle Panel -->
 			<div class="col-sm-7">
 
+				<div class="panel panel-primary" ng-repeat="folder in vm.folders">
+
+					<div class="panel-heading">
+						<div class="panel-title" style="padding-left:15px">
+							<div class="row">
+								<div class="col-md-12 btn-group">
+									<button type="button" class="btn btn-primary">
+										{{folder}} 
+									</button>
+									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="">what</a></li>
+									</ul>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel-body" >
+
+						<div class="list-group"  ng-repeat="expense in vm.expenses" ng-if="expense.name == folder" >
+							<div>
+								<a class="list-group-item" data-toggle="collapse" data-target="#{{expense._id}}" data-parent="#{{expense._id}}">
+									{{expense.tab}} 
+								</a>
+							</div>
+							<div id="{{expense._id}}" class="collapse">
+								<ul>
+									<li>{{expense.tab}}</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				------------------------------------------------
 				<div class="panel panel-primary" ng-repeat="expense in vm.expenses">
 
 					<div class="panel-heading">
@@ -64,12 +104,16 @@
 					</div>
 
 				</div>
-				<!--end of ng-peat-->
+				<!--end of ng-repeat-->
 
 
 
 				<div>
-					Page Header: {{vm.pageHeader}}
+					Grand Totla: {{vm.grandTotal | currency}}
+				</div>
+
+				<div>
+					Monthly Totla: {{vm.monthlyTotal | currency}}
 				</div>
 
 				<ul>

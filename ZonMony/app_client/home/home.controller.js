@@ -17,27 +17,26 @@ function homeCtrl(expenseFolderData) {
 		.success(function (data) {
 
 			//calculate total expenses, -- do not add paybycreditcard items
-			let sum = 0 ; 
-			for(let i in data){
-				console.log(data[i].payByCreditCard);
-				if(data[i].payByCreditCard == false){
-				for(let j in data[i].payment){
-					sum = sum+data[i].payment[j].amount ;
-				}
+			let sum = 0;
+			for (let i in data) {
+				if (data[i].payByCreditCard == false) {
+					for (let j in data[i].payment) {
+						sum = sum + data[i].payment[j].amount;
+					}
 				}
 			}
 			console.log(sum);
 
-			vm.total = sum ;  
+			vm.total = sum;
 
-			vm.pageHeader = '$' + sum ; 
-			
+			// vm.grandTotal = '$' + sum;
+			vm.grandTotal = sum;
+
 
 		})
 		.error(function (err) {
 			console.log(err);
 		});
-
 
 
 
@@ -49,14 +48,26 @@ function homeCtrl(expenseFolderData) {
 
 	expenseFolderData.getCurrentExpenses(year, month)
 		.success(function (data) {
+
 			vm.expenses = data;
 			vm.folders = [...new Set(data.map(x => x.name))].sort();
+
+			let sum = 0;
+			for (let i in data) {
+				if (data[i].payByCreditCard == false) {
+					for (let j in data[i].payment) {
+						sum = sum + data[i].payment[j].amount;
+					}
+				}
+			}
+
+			//vm.monthlyTotal = '$' + sum ; 
+			vm.monthlyTotal = sum ;
+
 		})
 		.error(function (err) {
 			console.log(err);
 		})
-
-
 
 
 }
