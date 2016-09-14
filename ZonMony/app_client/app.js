@@ -1,4 +1,4 @@
-﻿angular.module('zonMonyApp', ['ngRoute']);
+﻿angular.module('zonMonyApp', ['ngRoute','ui.bootstrap']);
 
 function config($routeProvider) {
 

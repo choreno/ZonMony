@@ -1,5 +1,6 @@
 ﻿angular.module('zonMonyApp')
-	.controller('homeCtrl', homeCtrl)
+	.controller('homeCtrl', homeCtrl);
+
 
 
 
@@ -7,9 +8,38 @@ function homeCtrl(expenseFolderData) {
 
 	var vm = this;
 
+
+
+vm.alerts = [
+    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+  ];
+
+  vm.addAlert = function() {
+    vm.alerts.push({msg: 'Another alert!'});
+  };
+
+  vm.closeAlert = function(index) {
+    vm.alerts.splice(index, 1);
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	vm.pageHeader = 'ttt';
 
-	vm.message = 'Checking your expenses...';
+	vm.message = 'Checking your expenses ...';
 
 
 	//Alert!, $http.get returns a promise with two methods, success and error
@@ -64,6 +94,7 @@ function homeCtrl(expenseFolderData) {
 
 			//vm.monthlyTotal = '$' + sum ; 
 			vm.monthlyTotal = sum ;
+			vm.message = null; 
 
 		})
 		.error(function (err) {
