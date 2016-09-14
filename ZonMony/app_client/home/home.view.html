@@ -1,4 +1,96 @@
-﻿<div class="container-fluid" ng-controller="homeCtrl">
+﻿<!-- Navigation -->
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+	<!--<nav class="navbar navbar-fixed-top navbar-dark bg-faded" role="navigation">-->
+
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#calendar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			<a class="navbar-brand" href="/about">{{vm.title}}</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="calendar">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li class="button-group">
+
+					<button class="btn btn-sm navbar-btn btn-primary">Month</button>
+					<button class="btn btn-sm navbar-btn" style="margin-right:30px;">Year</button>
+
+				</li>
+
+				<li ng-repeat="month in vm.months">
+					<span>
+							<button class="btn btn-sm navbar-btn">{{month}}</button>
+							<span>&nbsp;</span>
+					</span>
+					<span ng-show="month =='Mar' || month =='Jun' || month=='Sep'">
+							&nbsp;&nbsp;
+						</span>
+
+
+				</li>
+
+				<!--{{#each months}}
+					<li style="margin-left:5px;margin-right:5px">
+						{{#if this}}
+						<button class="btn btn-sm navbar-btn">{{this}}</button>
+						{{else}}
+						&nbsp;&nbsp;&nbsp;
+						{{/if}}
+					</li>
+					{{/each}}-->
+
+
+				<li style="margin-left:5px;margin-right:5px;margin-top:8px">
+
+					<select class="selectpicker" data-style="btn-md btn-primary" multiple>
+							
+							
+							<option selected>2009</option>
+							<!--<option ng-repeat="year in vm.years">{{year}}</option>-->
+						
+						</select>
+				</li>
+
+
+
+
+				<!--<li style="margin-left:5px;margin-right:5px;margin-top:8px">
+
+						<select class="selectpicker" data-style="btn-md btn-primary" multiple>
+
+							<option selected>2009</option>
+							{{#each years}}
+							<option>{{this}}</option>
+
+							{{/each}}
+						</select>
+					</li>-->
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid" ng-controller="homeCtrl">
 	<div class="row margin-t-1">
 		<h4>
 			<span>
@@ -43,7 +135,7 @@
 								</a>
 							</div>
 							<div id="{{expense._id}}" class="collapse">
-								
+
 								<form name="outerForm" class="tab-form-demo">
 									<uib-tabset active="activeForm">
 										<uib-tab index="0" heading="Form Tab">
@@ -55,28 +147,30 @@
 											</ng-form>
 										</uib-tab>
 										<uib-tab index="1" heading="Tab One">
-											Some Tab Content
-											<ul>
-									<li>Note: {{expense.payment[0].note}}</li>
-									<li>URL: {{expense.url}} | <span><button class="btn btn-xs"><a href="">URL</a></button></span></li>
-									<li>DueDate: {{expense.dueDate}}</li>
-									<li>payByCreditCard: {{expense.payByCreditCard}}</li>
-									<li>UpdatedDTTM: {{expense.payment[0].updatedDTTM | date : 'medium'}}</li>
-									<li>CreatedDTTM: {{expense.payment[0].createdDTTM | date : 'medium'}}</li>
 
-								</ul>
+											<ul>
+												Some Tab Content
+
+												<li>Note: {{expense.payment[0].note}}</li>
+												<li>URL: {{expense.url}} | <span><button class="btn btn-xs"><a href="">URL</a></button></span></li>
+												<li>DueDate: {{expense.dueDate}}</li>
+												<li>payByCreditCard: {{expense.payByCreditCard}}</li>
+												<li>UpdatedDTTM: {{expense.payment[0].updatedDTTM | date : 'medium'}}</li>
+												<li>CreatedDTTM: {{expense.payment[0].createdDTTM | date : 'medium'}}</li>
+
+											</ul>
 										</uib-tab>
 										<uib-tab index="2" heading="Tab Two">
 											More Tab Content
 											<ul>
-									<li>Note: {{expense.payment[0].note}}</li>
-									<li>URL: {{expense.url}} | <span><button class="btn btn-xs"><a href="">URL</a></button></span></li>
-									<li>DueDate: {{expense.dueDate}}</li>
-									<li>payByCreditCard: {{expense.payByCreditCard}}</li>
-									<li>UpdatedDTTM: {{expense.payment[0].updatedDTTM | date : 'medium'}}</li>
-									<li>CreatedDTTM: {{expense.payment[0].createdDTTM | date : 'medium'}}</li>
+												<li>Note: {{expense.payment[0].note}}</li>
+												<li>URL: {{expense.url}} | <span><button class="btn btn-xs"><a href="">URL</a></button></span></li>
+												<li>DueDate: {{expense.dueDate}}</li>
+												<li>payByCreditCard: {{expense.payByCreditCard}}</li>
+												<li>UpdatedDTTM: {{expense.payment[0].updatedDTTM | date : 'medium'}}</li>
+												<li>CreatedDTTM: {{expense.payment[0].createdDTTM | date : 'medium'}}</li>
 
-								</ul>
+											</ul>
 										</uib-tab>
 									</uib-tabset>
 								</form>

@@ -4,38 +4,20 @@
 
 
 
-function homeCtrl(expenseFolderData) {
+function homeCtrl(expenseFolderData,calendarData) {
 
 	var vm = this;
 
 
 
-vm.alerts = [
-    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-  ];
 
-  vm.addAlert = function() {
-    vm.alerts.push({msg: 'Another alert!'});
-  };
+		vm.title=  'R+L Carriers - ZonMony' ;
 
-  vm.closeAlert = function(index) {
-    vm.alerts.splice(index, 1);
-  };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+		vm.months = calendarData.months; 
+		vm.years = calendarData.years; 
+		
+		console.log(vm.years); 
 
 	vm.pageHeader = 'ttt';
 
@@ -55,7 +37,7 @@ vm.alerts = [
 					}
 				}
 			}
-			console.log(sum);
+			//console.log(sum);
 
 			vm.total = sum;
 
@@ -80,7 +62,7 @@ vm.alerts = [
 		.success(function (data) {
 
 			vm.expenses = data;
-			console.log(data);
+			//console.log(data);
 			vm.folders = [...new Set(data.map(x => x.name))].sort();
 
 			let sum = 0;
