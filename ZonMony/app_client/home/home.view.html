@@ -48,15 +48,13 @@
 					{{/each}}-->
 
 
-				<li style="margin-left:5px;margin-right:5px;margin-top:8px">
+				<li >
 
-					<select class="selectpicker" data-style="btn-md btn-primary" multiple>
-							
-							
-							<option selected>2009</option>
-							<!--<option ng-repeat="year in vm.years">{{year}}</option>-->
-						
-						</select>
+<select ng-model="vm.selectedYear" ng-options="x for x in vm.years">
+<!--<option ng-repeat="year in vm.years">{{year}}</option>-->
+</select>
+
+
 				</li>
 
 
@@ -115,6 +113,9 @@
 						</p>
 					</div>
 				</div>
+				
+				<h4>You selected: {{vm.selectedYear}}</h4>
+
 			</div>
 			<!-- Middle Panel -->
 

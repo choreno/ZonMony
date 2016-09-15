@@ -4,20 +4,17 @@
 
 
 
-function homeCtrl(expenseFolderData,calendarData) {
+function homeCtrl($scope, expenseFolderData,calendarData) {
 
 	var vm = this;
 
-
-
-
 		vm.title=  'R+L Carriers - ZonMony' ;
-
 	
 		vm.months = calendarData.months; 
-		vm.years = calendarData.years; 
+		vm.years = calendarData.years;
+		vm.selectedYear = calendarData.currentYear; 
 		
-		console.log(vm.years); 
+		//console.log(vm.years); 
 
 	vm.pageHeader = 'ttt';
 
