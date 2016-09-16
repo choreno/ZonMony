@@ -4,17 +4,17 @@
 
 
 
-function homeCtrl($scope, expenseFolderData,calendarData) {
+function homeCtrl($scope, expenseFolderData, calendarData) { //remove $scope at later
 
 	var vm = this;
 
-		vm.title=  'R+L Carriers - ZonMony' ;
-	
-		vm.months = calendarData.months; 
-		vm.years = calendarData.years;
-		vm.selectedYear = calendarData.currentYear; 
-		
-		//console.log(vm.years); 
+	vm.title = 'R+L Carriers - ZonMony';
+
+	vm.months = calendarData.months;
+	vm.years = calendarData.years;
+	vm.selectedYear = calendarData.currentYear;
+	vm.selectedYear = 2010;
+
 
 	vm.pageHeader = 'ttt';
 
@@ -72,8 +72,8 @@ function homeCtrl($scope, expenseFolderData,calendarData) {
 			}
 
 			//vm.monthlyTotal = '$' + sum ; 
-			vm.monthlyTotal = sum ;
-			vm.message = null; 
+			vm.monthlyTotal = sum;
+			vm.message = null;
 
 		})
 		.error(function (err) {
