@@ -8,29 +8,54 @@ function homeCtrl($scope, expenseFolderData, calendarData) { //remove $scope at 
 
     var vm = this;
 
-    vm.title = 'R+L Carriers - ZonMony';
 
-    vm.months = calendarData.months;
-    vm.years = calendarData.years;
-    vm.selectedYear = calendarData.currentYear;
-    vm.selectedMonth = calendarData.currentMonth;
+    $scope.selectedMonth = calendarData.currentMonth ;
+    $scope.selectedYear = 2011; 
 
-    vm.selectedYear = 2010;
+    vm.navbar = {
+        title: 'R+L Carriers - ZonMony',
+        months: calendarData.months,
+        years: calendarData.years,
+        selectedMonth: $scope.selectedMonth,
+        selectedYear: $scope.selectedYear,
+        // selectedMonth: calendarData.currentMonth,
+        //selectedYear : calendarData.currentYear,
+        //selectedYear: 2010,
+        // setMonth: function (index) {
+        //     $scope.selectedMonth = index;
+        //     $scope.selectedYear
+        //     //console.log(index);
+        //     console.log( $scope.selectedMonth + '/' + $scope.selectedYear);
+        // }
+    }
 
-    vm.setMonth = function(index) {
-        vm.selectedMonth = index;
-        console.log(vm.selectedMonth + '/' + vm.selectedYear);
-    };
+    //vm.title = 'R+L Carriers - ZonMony';
+
+    // vm.months = calendarData.months;
+    // vm.years = calendarData.years;
+    // vm.selectedYear = calendarData.currentYear;
+    // vm.selectedMonth = calendarData.currentMonth;
+
+    // vm.selectedYear = 2010;
+
+    //console.log(vm.selectedYear);
 
 
-    vm.pageHeader = 'ttt';
+    // vm.setMonth = function (index) {
+    //     console.log(index); 
+    //     vm.selectedMonth = index;
+    //     console.log(vm.selectedMonth + '/' + vm.selectedYear);
+    // };
+
+
+    // vm.pageHeader = 'ttt';
 
     vm.message = 'Checking your expenses ...';
 
 
     //Alert!, $http.get returns a promise with two methods, success and error
     expenseFolderData.getAllExpenses()
-        .success(function(data) {
+        .success(function (data) {
 
             //calculate total expenses, -- do not add paybycreditcard items
             let sum = 0;
@@ -53,7 +78,7 @@ function homeCtrl($scope, expenseFolderData, calendarData) { //remove $scope at 
 
 
         })
-        .error(function(err) {
+        .error(function (err) {
             console.log(err);
         });
 
@@ -66,7 +91,7 @@ function homeCtrl($scope, expenseFolderData, calendarData) { //remove $scope at 
     var month = 1;
 
     expenseFolderData.getCurrentExpenses(year, month)
-        .success(function(data) {
+        .success(function (data) {
 
             vm.expenses = data;
             // //console.log(data);
@@ -86,7 +111,7 @@ function homeCtrl($scope, expenseFolderData, calendarData) { //remove $scope at 
             vm.message = null;
 
         })
-        .error(function(err) {
+        .error(function (err) {
             console.log(err);
         })
 

@@ -54,8 +54,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 //angular
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-app.use('/', routes);
+//app.use('/', routes); //remark for angular SPA
 app.use('/api', routesApi);  //it makes only use the api routes
+
+//Angular SPA 
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+});
+
 
 
 app.use('/users', users);

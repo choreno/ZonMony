@@ -12,7 +12,7 @@ function calendarData() {
     var currentYear = now.getFullYear();
     var currentMonth = now.getMonth(); // 8 
 
-    console.log(currentMonth);
+    //console.log(currentMonth);
 
 
     return {

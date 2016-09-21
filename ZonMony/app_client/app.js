@@ -1,6 +1,6 @@
-﻿angular.module('zonMonyApp', ['ngRoute','ui.bootstrap','selector']);
+﻿angular.module('zonMonyApp', ['ngRoute', 'ui.bootstrap', 'selector']);
 
-function config($routeProvider) {
+function config($routeProvider, $locationProvider) {
 
 	$routeProvider
 		.when('/', {
@@ -9,9 +9,20 @@ function config($routeProvider) {
 			controllerAs: 'vm'
 
 		})
-		.otherwise({redirectTo: '/'});
+		.when('/about', {
+			templateUrl: '/common/views/genericText.view.html',
+			controller: 'aboutCtrl',
+			controllerAs: 'vm'
+		})
+		.otherwise({ redirectTo: '/' })
+		;
+
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	});
 };
 
 
 angular.module('zonMonyApp')
-	.config(['$routeProvider', config]);
+	.config(['$routeProvider', '$locationProvider', config]);

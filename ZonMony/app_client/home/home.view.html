@@ -1,49 +1,5 @@
 ﻿<!-- Navigation -->
-<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-    <!--<nav class="navbar navbar-fixed-top navbar-dark bg-faded" role="navigation">-->
-
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#calendar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-            <a class="navbar-brand" href="/about">{{vm.title}}</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="calendar">
-
-            <ul class="nav navbar-nav navbar-right">
-                <li class="button-group">
-
-                    <button class="btn btn-sm navbar-btn btn-primary">Month</button>
-                    <button class="btn btn-sm navbar-btn" style="margin-right:30px;">Year</button>
-
-                </li>
-
-                <li ng-repeat="month in vm.months">
-                    <span>
-						<button class="btn btn-sm navbar-btn" ng-class="vm.selectedMonth === $index ?'btn-primary':''" ng-click="vm.setMonth($index)">
-							{{month}}
-						</button>
-							<span>&nbsp;</span>
-                    </span>
-                    <span ng-show="month =='Mar' || month =='Jun' || month=='Sep'">
-							&nbsp;&nbsp;
-					</span>
-                </li>
-                <li>
-                    <select selector model="vm.selectedYear" options="vm.years">
-					</select>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<navbar content="vm.navbar"></navbar>
 
 <div class="container-fluid" ng-controller="homeCtrl">
     <div class="row margin-t-1">
@@ -70,7 +26,7 @@
                     </div>
                 </div>
 
-                <h4>You selected: {{vm.selectedYear}}</h4>
+                <h4>You selected: {{vm.navbar.selectedYear}}</h4>
 
             </div>
             <!-- Middle Panel -->
@@ -257,8 +213,9 @@
 
 </div>
 
+<footer-generic></footer-generic>
 <!--footer-->
-<div class="container-fluid ">
+<!--<div class="container-fluid ">
     <hr>
     <footer class="margin-tb-1 ">
         <div class="row ">
@@ -267,4 +224,4 @@
             </div>
         </div>
     </footer>
-</div>
+</div>-->
